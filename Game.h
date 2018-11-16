@@ -1,6 +1,21 @@
 #pragma once
 #include "Board.h"
 
+/*
+	mode_types
+	MODE1: player vs player
+*/
+enum mode_types {
+	MODE1  // PERSON VS PERSON
+};
+
+struct move {
+	unsigned int row_num;
+	unsigned int col_num;
+	piece_type piece;
+};
+
+
 class Game
 {
 public:
@@ -11,12 +26,11 @@ public:
 	
 private:
 	bool is_over();
-	int turn;
-	Board* board;
-};
+	struct move get_move();
 
-enum mode_types {
-	MODE1
+	int _turn;
+	Player* _cur_player;
+	Board* _board;
 };
 
 class ModeManager{
